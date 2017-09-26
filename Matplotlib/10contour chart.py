@@ -1,29 +1,26 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-n=12
-X = np.arange(n) #0-11
+def f(x,y):
+    #compute the contour height function
+    return (1-x/3+x**5+y**3)*np.exp(-x**2-y**2)
+n=256
+x = np.linspace(-3,3,n)
+y = np.linspace(-3,3,n)
+X,Y = np.meshgrid(x,y)
+#use plt.contourf to filling contours
+# x,y and value for(x,y)point
+plt.contourf(X,Y,f(X,Y),8,alpha=0.75,cmap=plt.cm.hot)
+#give a value to corresponding cmap(color map) to represent a color
+# 8 is represented 10 sections, 0->let the picture split 2 sections
 
-#uniform distribution ,#mean,variance
-Y1 = (1-X/float(n) )*np.random.uniform(0.5,1.0,n)
-Y2 = (1-X/float(n) )*np.random.uniform(0.5,1.0,n)
+#use plt.contour to add contour lines
+C = plt.contour(X,Y,f(X,Y),8,colors='black',linewidth=.5)
+#adding label
+plt.clabel(C,inline=True,fontsize=10)
+#Choosing True would draw words in line,False will let the words across line. 
 
-plt.bar(X,+Y1, facecolor='#9999ff',edgecolor='white') #up,facecolor = color
-plt.bar(X,-Y2, facecolor='#ff9999',edgecolor='white') #down,
-
-for x,y in zip(X,Y1):
-    #zip can let x,y in zip(X,Y1) respectively to give value
-    #ha: horizontal alignment
-    plt.text(x+0.4,y+0.05,'%.2f' %y,ha='center',va='bottom')
-  
-for x,y in zip(X,Y2):
-    #zip can let x,y in zip(X,Y1) respectively to give value
-    #ha: horizontal alignment
-    plt.text(x+0.4,-y-0.05,'-%.2f' %y,ha='center',va='top')
-
-plt.xlim(-.5,n)
+#remove the picture of ticks
 plt.xticks(())
-plt.ylim(-1.25,1.25)
-#hide the axial value
 plt.yticks(())
 plt.show()
