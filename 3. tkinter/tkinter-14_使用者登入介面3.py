@@ -3,7 +3,7 @@ from tkinter import messagebox  # import this to fix messagebox error
 import pickle
 
 window = tk.Tk()
-window.title('Welcome to Mofan Python')
+window.title('Welcome to Portran Python')
 window.geometry('450x300')
 
 # welcome image
@@ -46,7 +46,7 @@ def usr_login():
             usr_sign_up()
 
 def usr_sign_up():
-    def sign_to_Mofan_Python():
+    def sign_to_Portran_Python():
         np = new_pwd.get()
         npf = new_pwd_confirm.get()
         nn = new_name.get()
@@ -82,7 +82,7 @@ def usr_sign_up():
     entry_usr_pwd_confirm = tk.Entry(window_sign_up, textvariable=new_pwd_confirm, show='*')
     entry_usr_pwd_confirm.place(x=150, y=90)
 
-    btn_comfirm_sign_up = tk.Button(window_sign_up, text='Sign up', command=sign_to_Mofan_Python)
+    btn_comfirm_sign_up = tk.Button(window_sign_up, text='Sign up', command=sign_to_Portran_Python)
     btn_comfirm_sign_up.place(x=150, y=130)
 
 # login and sign up button
